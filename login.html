@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Eventify</title>
+    <link rel="icon" type="image/png" href="img/EVE.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #ffeccc;
+      }
+      .main-content {
+        flex: 1 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-container {
+        background: #fff;
+        padding: 2.5rem 2rem 2rem 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+        position: relative;
+      }
+      .login-container h2 {
+        color: #ff6600;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+      .login-container input[type="text"],
+      .login-container input[type="password"] {
+        width: 90%;
+        padding: 0.7rem;
+        margin: 0.7rem 0;
+        border: 1px solid #ffd700;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #fffaf5;
+        transition: border 0.2s;
+      }
+      .login-container input[type="text"]:focus,
+      .login-container input[type="password"]:focus {
+        border: 1.5px solid #ff9800;
+        outline: none;
+      }
+      .login-container button {
+        width: 100%;
+        padding: 0.8rem;
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: background 0.2s;
+      }
+      .login-container button:hover {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+      }
+      .login-container .signup-link {
+        display: block;
+        margin-top: 1.2rem;
+        color: #ff6600;
+        text-decoration: none;
+        font-size: 0.98rem;
+      }
+      .login-container .signup-link:hover {
+        text-decoration: underline;
+      }
+      .back-btn {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        background: none;
+        border: none;
+        color: #ff6600;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 8px;
+        transition: color 0.2s, background 0.2s;
+        z-index: 2;
+      }
+      .back-btn:hover {
+        color: #e74c1a;
+        background: #fff7e0;
+        border-radius: 4px;
+      }
+      .nav-mini {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+      .nav-mini a {
+        color: #ff6600;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-mini a:hover {
+        color: #e74c1a;
+        text-decoration: underline;
+      }
+      /* Custom Alert Styles */
+      .custom-alert {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        justify-content: center;
+        align-items: center;
+      }
+      .custom-alert-content {
+        background: #fff;
+        border-radius: 14px;
+        padding: 2rem 2.5rem 1.5rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        min-width: 280px;
+        max-width: 90vw;
+      }
+      .custom-alert-content span {
+        display: block;
+        font-size: 1.1rem;
+        color: #222;
+        margin-bottom: 1.5rem;
+      }
+      .custom-alert-content button {
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem 2.2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .custom-alert-content button:hover {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-content">
+      <div class="login-container">
+        <button class="back-btn" onclick="window.history.back()">
+          &#8592; Back
+        </button>
+        <div class="nav-mini">
+          <a href="index.html">Home</a>
+          <a href="event.html">Events</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <h2>Login to Eventify</h2>
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <a class="signup-link" href="signup.html"
+          >Don't have an account? Sign up</a
+        >
+      </div>
+    </div>
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert">
+      <div class="custom-alert-content">
+        <span id="customAlertMsg"></span>
+        <button onclick="closeCustomAlert()">OK</button>
+      </div>
+    </div>
+    <script>
+      function showCustomAlert(message, redirectUrl) {
+        document.getElementById("customAlertMsg").textContent = message;
+        document.getElementById("customAlert").style.display = "flex";
+        document.getElementById("customAlert").dataset.redirect =
+          redirectUrl || "";
+      }
+
+      function closeCustomAlert() {
+        const alertBox = document.getElementById("customAlert");
+        alertBox.style.display = "none";
+        const redirectUrl = alertBox.dataset.redirect;
+        if (redirectUrl) {
+          window.location.href = redirectUrl;
+        }
+      }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          // You can add authentication logic here
+          showCustomAlert("Login successful! Redirecting...", "index.html");
+        });
+    </script>
+  </body>
+</html>

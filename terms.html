@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Conditions | Eventify</title>
+    <link rel="icon" type="image/png" href="img/EVE.png" />
+    <style>
+      body {
+        background: #ffeccc;
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        padding: 1rem 2vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .navbar-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .navbar-logo img {
+        height: 48px;
+      }
+      .navbar-logo span {
+        font-size: 1.5rem;
+        color: #ff6600;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1.2rem;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-links li a {
+        color: #ff6600;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: color 0.2s;
+        padding: 6px 14px;
+        border-radius: 5px;
+      }
+      .nav-links li a:hover,
+      .nav-links li a.active {
+        color: #fff;
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        text-decoration: none;
+      }
+      .terms-section {
+        flex: 1 0 auto;
+        max-width: 900px;
+        margin: 2.5rem auto 2rem auto;
+        padding: 2rem 1.5rem 2.5rem 1.5rem;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+      }
+      .terms-section h1 {
+        color: #ff6600;
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+      .terms-section h2 {
+        color: #ff9800;
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.7rem;
+      }
+      .terms-section p,
+      .terms-section ul {
+        color: #333;
+        font-size: 1.05rem;
+        margin-bottom: 1.1rem;
+        line-height: 1.7;
+      }
+      .terms-section ul {
+        padding-left: 1.3rem;
+      }
+      @media (max-width: 700px) {
+        .terms-section {
+          padding: 1.2rem 0.5rem;
+        }
+        .navbar-logo span {
+          font-size: 1.1rem;
+        }
+      }
+      /* Hamburger styles */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+        margin-left: 10px;
+      }
+      .hamburger span {
+        display: block;
+        height: 4px;
+        width: 28px;
+        background: #ff6600;
+        margin: 5px 0;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      /* Hamburger open animation */
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      /* Responsive: Show hamburger and hide nav-links on small screens */
+      @media (max-width: 900px) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-links {
+          position: absolute;
+          top: 80px;
+          right: 18px;
+          background: #fff;
+          flex-direction: column;
+          gap: 0;
+          width: 180px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+          border-radius: 10px;
+          overflow: hidden;
+          z-index: 1000;
+          display: none;
+          padding: 0.7rem 0;
+        }
+        .nav-links.show {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+          text-align: left;
+        }
+        .nav-links li a {
+          display: block;
+          width: 100%;
+          padding: 12px 18px;
+          border-radius: 0;
+          color: #ff6600;
+          background: none;
+        }
+        .nav-links li a:hover {
+          background: #ffeccc;
+          color: #ff9800;
+        }
+      }
+      /* iPhone 14 (390 x 844) */
+      @media (max-width: 400px) {
+        html {
+          font-size: 15px;
+        }
+        .navbar,
+        .footer-main,
+        .footer-bottom,
+        .details,
+        .card-container,
+        .hero,
+        .slideshow,
+        .places-section,
+        .careers-section,
+        .promo-section,
+        .terms-section,
+        .privacy-section {
+          padding-left: 4px !important;
+          padding-right: 4px !important;
+        }
+        .card,
+        .job-card,
+        .promo-card,
+        .place-card {
+          width: 98vw !important;
+          min-width: unset !important;
+          max-width: 100vw !important;
+        }
+        .nav-links {
+          gap: 0.5rem;
+        }
+      }
+
+      /* Samsung S10 (360 x 760) */
+      @media (max-width: 370px) {
+        html {
+          font-size: 14px;
+        }
+        .navbar,
+        .footer-main,
+        .footer-bottom,
+        .details,
+        .card-container,
+        .hero,
+        .slideshow,
+        .places-section,
+        .careers-section,
+        .promo-section,
+        .terms-section,
+        .privacy-section {
+          padding-left: 2px !important;
+          padding-right: 2px !important;
+        }
+        .card,
+        .job-card,
+        .promo-card,
+        .place-card {
+          width: 97vw !important;
+          min-width: unset !important;
+          max-width: 100vw !important;
+        }
+        .nav-links {
+          gap: 0.3rem;
+        }
+      }
+
+      /* Samsung S20 (412 x 915) */
+      @media (max-width: 420px) {
+        html {
+          font-size: 15px;
+        }
+        .navbar,
+        .footer-main,
+        .footer-bottom,
+        .details,
+        .card-container,
+        .hero,
+        .slideshow,
+        .places-section,
+        .careers-section,
+        .promo-section,
+        .terms-section,
+        .privacy-section {
+          padding-left: 6px !important;
+          padding-right: 6px !important;
+        }
+        .card,
+        .job-card,
+        .promo-card,
+        .place-card {
+          width: 98vw !important;
+          min-width: unset !important;
+          max-width: 100vw !important;
+        }
+      }
+
+      /* iPad Air 4 (820 x 1180) */
+      @media (max-width: 850px) {
+        html {
+          font-size: 16px;
+        }
+        .navbar,
+        .footer-main,
+        .footer-bottom,
+        .details,
+        .card-container,
+        .hero,
+        .slideshow,
+        .places-section,
+        .careers-section,
+        .promo-section,
+        .terms-section,
+        .privacy-section {
+          padding-left: 18px !important;
+          padding-right: 18px !important;
+        }
+        .card-container {
+          flex-direction: column;
+          align-items: center;
+          gap: 18px;
+        }
+        .card,
+        .job-card,
+        .promo-card,
+        .place-card {
+          width: 95vw !important;
+          min-width: unset !important;
+          max-width: 100vw !important;
+        }
+      }
+
+      /* Infinix Note 12 Pro (1080 x 2400, but most users in portrait ~430px) */
+      @media (max-width: 440px) {
+        html {
+          font-size: 15px;
+        }
+        .navbar,
+        .footer-main,
+        .footer-bottom,
+        .details,
+        .card-container,
+        .hero,
+        .slideshow,
+        .places-section,
+        .careers-section,
+        .promo-section,
+        .terms-section,
+        .privacy-section {
+          padding-left: 8px !important;
+          padding-right: 8px !important;
+        }
+        .card,
+        .job-card,
+        .promo-card,
+        .place-card {
+          width: 98vw !important;
+          min-width: unset !important;
+          max-width: 100vw !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="img/EVA.png" alt="Eventify Logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="event.html">Events</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+      </ul>
+      <!-- Hamburger Button -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <section class="terms-section">
+      <h1>Terms & Conditions</h1>
+      <p>
+        Welcome to Eventify! By accessing or using our website and services, you
+        agree to comply with and be bound by the following terms and conditions.
+        Please read them carefully.
+      </p>
+      <h2>1. Acceptance of Terms</h2>
+      <p>
+        By using Eventify, you agree to these Terms & Conditions and our Privacy
+        Policy. If you do not agree, please do not use our platform.
+      </p>
+      <h2>2. Use of Our Services</h2>
+      <ul>
+        <li>You must be at least 16 years old to use Eventify.</li>
+        <li>
+          All information provided during registration and booking must be
+          accurate and up-to-date.
+        </li>
+        <li>
+          You are responsible for maintaining the confidentiality of your
+          account credentials.
+        </li>
+      </ul>
+      <h2>3. Event Booking & Payments</h2>
+      <ul>
+        <li>All bookings are subject to availability and confirmation.</li>
+        <li>
+          Payments are processed securely via our payment partners. Eventify
+          does not store your payment details.
+        </li>
+        <li>
+          Promo codes and discounts are subject to their own terms and may
+          change without notice.
+        </li>
+      </ul>
+      <h2>4. Cancellations & Refunds</h2>
+      <ul>
+        <li>
+          You may cancel your booking according to the event’s cancellation
+          policy.
+        </li>
+        <li>
+          Refunds (if applicable) will be processed within 7-14 business days.
+        </li>
+      </ul>
+      <h2>5. User Conduct</h2>
+      <ul>
+        <li>
+          Do not use Eventify for unlawful, harmful, or fraudulent activities.
+        </li>
+        <li>Respect other users and event organizers at all times.</li>
+        <li>
+          Do not post or share offensive, abusive, or inappropriate content.
+        </li>
+      </ul>
+      <h2>6. Intellectual Property</h2>
+      <p>
+        All content, logos, and materials on Eventify are the property of
+        Eventify or its partners. You may not use, copy, or distribute any
+        content without permission.
+      </p>
+      <h2>7. Limitation of Liability</h2>
+      <p>
+        Eventify is not liable for any damages, losses, or injuries resulting
+        from your use of our platform or attendance at events booked through us.
+      </p>
+      <h2>8. Changes to Terms</h2>
+      <p>
+        We may update these Terms & Conditions at any time. Continued use of
+        Eventify means you accept any changes.
+      </p>
+      <h2>9. Contact Us</h2>
+      <p>
+        For questions or concerns, please contact us at
+        <a href="mailto:support@eventify.com" style="color: #ff6600"
+          >support@eventify.com</a
+        >.
+      </p>
+      <p style="text-align: center; color: #888; margin-top: 2.5rem">
+        &copy; 2025 Eventify. All
+      </p>
+    </section>
+    <script>
+      // Hamburger menu toggle
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburgerBtn.addEventListener("click", function () {
+        hamburgerBtn.classList.toggle("active");
+        navLinks.classList.toggle("show");
+      });
+
+      // Optional: Close menu when a link is clicked (for better UX)
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 900) {
+            hamburgerBtn.classList.remove("active");
+            navLinks.classList.remove("show");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

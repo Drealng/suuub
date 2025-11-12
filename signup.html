@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | Eventify</title>
+    <link rel="icon" type="image/png" href="img/EVE.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        display: flex;
+        background: #fff;
+      }
+      .signup-bg {
+        background: url("img/yoga-bg.jpg") center center/cover no-repeat;
+        min-height: 100vh;
+      }
+      .signup-container {
+        max-width: 430px;
+        margin: 0 auto;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 0 2.5rem;
+        box-sizing: border-box;
+      }
+      .signup-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+      }
+      .signup-logo img {
+        height: 32px;
+      }
+      .signup-logo span {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff6600;
+        letter-spacing: 1px;
+      }
+      .signup-container h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+        color: #222;
+      }
+      .signup-container h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0 0 2rem 0;
+        color: #222;
+      }
+      .signup-form label {
+        display: block;
+        text-align: left;
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+        color: #444;
+        font-size: 1rem;
+      }
+      .signup-form input {
+        width: 100%;
+        padding: 0.8rem;
+        margin-bottom: 1.2rem;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #fffaf5;
+        transition: border 0.2s;
+      }
+      .signup-form input:focus {
+        border: 1.5px solid #ff9800;
+        outline: none;
+      }
+      .signup-form button {
+        width: 100%;
+        padding: 0.9rem;
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 1.2rem;
+        transition: background 0.2s;
+      }
+      .signup-form button:hover {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+      }
+      .signup-or {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem 0 1rem 0;
+        color: #888;
+        font-size: 1rem;
+      }
+      .signup-or::before,
+      .signup-or::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+        margin: 0 10px;
+      }
+      .signup-socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .signup-socials img {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        background: #f7f7fa;
+        padding: 6px;
+        cursor: pointer;
+        border: 1px solid #eee;
+        transition: box-shadow 0.2s;
+      }
+      .signup-socials img:hover {
+        box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+      }
+      .signup-policy {
+        font-size: 0.95rem;
+        color: #888;
+        margin-bottom: 1.5rem;
+      }
+      .signup-policy a {
+        color: #ff6600;
+        text-decoration: underline;
+      }
+      .signup-help {
+        text-align: center;
+        color: #ff6600;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      @media (max-width: 900px) {
+        .signup-bg {
+          display: none;
+        }
+        .signup-container {
+          max-width: 100vw;
+          padding: 0 1rem;
+        }
+      }
+      .custom-alert {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        justify-content: center;
+        align-items: center;
+      }
+      .custom-alert-content {
+        background: #fff;
+        border-radius: 14px;
+        padding: 2rem 2.5rem 1.5rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        min-width: 280px;
+        max-width: 90vw;
+      }
+      .custom-alert-content span {
+        display: block;
+        font-size: 1.1rem;
+        color: #222;
+        margin-bottom: 1.5rem;
+      }
+      .custom-alert-content button {
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem 2.2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .custom-alert-content button:hover {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-bg"></div>
+    <div class="signup-container">
+      <div class="signup-logo">
+        <img src="img/EVE.png" alt="Eventify Logo" />
+        <span>Eventify</span>
+      </div>
+      <h1>Welcome!</h1>
+      <h2>Sign up for Eventify</h2>
+      <form class="signup-form" id="signupForm">
+        <label for="name">First Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your first name"
+          required
+        />
+
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Enter your phone number"
+          required
+          pattern="[0-9]{10,15}"
+        />
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email address"
+          required
+        />
+
+        <button type="submit">Continue</button>
+      </form>
+      <div class="signup-or">Or sign in with</div>
+      <div class="signup-socials">
+        <img src="img/apple.svg" alt="Apple" title="Apple" />
+        <img src="img/goog.svg" alt="Google" title="Google" />
+        <img src="img/face.svg" alt="Facebook" title="Facebook" />
+      </div>
+      <div class="signup-policy">
+        By clicking Continue or the Apple, Google, or Facebook icons, you agree
+        to Eventify's
+        <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+      </div>
+      <div class="signup-help">Need help finding your tickets?</div>
+    </div>
+    <div id="customAlert" class="custom-alert">
+      <div class="custom-alert-content">
+        <span id="customAlertMsg"></span>
+        <button onclick="closeCustomAlert()">OK</button>
+      </div>
+    </div>
+    <script>
+      function showCustomAlert(message, redirectUrl) {
+        document.getElementById("customAlertMsg").textContent = message;
+        document.getElementById("customAlert").style.display = "flex";
+        document.getElementById("customAlert").dataset.redirect =
+          redirectUrl || "";
+      }
+      function closeCustomAlert() {
+        document.getElementById("customAlert").style.display = "none";
+        var redirect = document.getElementById("customAlert").dataset.redirect;
+        if (redirect) window.location.href = redirect;
+      }
+
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          showCustomAlert(
+            "You have successfully signed up for Eventify!",
+            "login.html"
+          );
+        });
+    </script>
+  </body>
+</html>

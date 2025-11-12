@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscribe | Eventify</title>
+    <link rel="icon" type="image/png" href="img/EVE.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        background: #ffeccc;
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .subscribe-container {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+        padding: 2.5rem 2rem 2rem 2rem;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        margin: 2rem 0;
+        position: relative;
+      }
+      .subscribe-container h2 {
+        color: #ff6600;
+        margin-bottom: 1.2rem;
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+      .plan-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .plan-option {
+        border: 2px solid #ffd700;
+        border-radius: 10px;
+        padding: 1.2rem 1rem;
+        background: #fffaf5;
+        cursor: pointer;
+        transition: border 0.2s, background 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      .plan-option.selected,
+      .plan-option:hover {
+        border: 2px solid #ff9800;
+        background: #fff3e0;
+      }
+      .plan-radio {
+        accent-color: #ff9800;
+        margin-right: 1rem;
+        transform: scale(1.2);
+      }
+      .currency-toggle {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .currency-toggle label {
+        font-size: 1rem;
+        color: #ff6600;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .subscribe-btn {
+        width: 100%;
+        padding: 0.9rem;
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: background 0.2s;
+      }
+      .subscribe-btn:hover {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+      }
+      .form-input {
+        width: 100%;
+        padding: 0.7rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        border: 1px solid #ffd700;
+        font-size: 1rem;
+        background: #fffaf5;
+      }
+      /* Custom Alert Styles */
+      .custom-alert {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        justify-content: center;
+        align-items: center;
+      }
+      .custom-alert-content {
+        background: #fff;
+        border-radius: 14px;
+        padding: 2rem 2.5rem 1.5rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        min-width: 280px;
+        max-width: 90vw;
+      }
+      .custom-alert-content span {
+        display: block;
+        font-size: 1.1rem;
+        color: #222;
+        margin-bottom: 1.5rem;
+      }
+      .custom-alert-content button {
+        background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem 2.2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .custom-alert-content button:hover {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+      }
+      .back-btn {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        background: none;
+        border: none;
+        color: #ff6600;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 8px;
+        transition: color 0.2s, background 0.2s;
+        z-index: 2;
+      }
+      .back-btn:hover {
+        color: #e74c1a;
+        background: #fff7e0;
+        border-radius: 4px;
+      }
+    </style>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+  </head>
+  <body>
+    <div class="subscribe-container">
+      <button class="back-btn" onclick="window.location.href='index.html'">
+        &#8592; Back
+      </button>
+      <h2>Subscribe to Eventify</h2>
+      <div class="currency-toggle">
+        <label>
+          <input
+            type="radio"
+            name="currency"
+            value="usd"
+            checked
+            onchange="updatePrices()"
+          />
+          USD
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="currency"
+            value="ngn"
+            onchange="updatePrices()"
+          />
+          NGN
+        </label>
+      </div>
+      <form id="subscribeForm">
+        <input
+          type="text"
+          id="username"
+          class="form-input"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          class="form-input"
+          placeholder="Password"
+          required
+        />
+        <input
+          type="tel"
+          id="phone"
+          class="form-input"
+          placeholder="Phone Number"
+          required
+          pattern="[0-9]{7,15}"
+        />
+        <input
+          type="email"
+          id="email"
+          class="form-input"
+          placeholder="Email"
+          required
+        />
+        <div class="plan-group">
+          <label class="plan-option" id="monthlyOption">
+            <input
+              type="radio"
+              class="plan-radio"
+              name="plan"
+              value="monthly"
+              checked
+            />
+            <span>
+              Monthly <span class="plan-price" id="monthlyPrice">$3.99</span>
+            </span>
+          </label>
+          <label class="plan-option" id="yearlyOption">
+            <input type="radio" class="plan-radio" name="plan" value="yearly" />
+            <span>
+              Yearly <span class="plan-price" id="yearlyPrice">$9.99</span>
+            </span>
+          </label>
+        </div>
+        <button type="submit" class="subscribe-btn">Subscribe & Pay</button>
+      </form>
+    </div>
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert">
+      <div class="custom-alert-content">
+        <span id="customAlertMsg"></span>
+        <button onclick="closeCustomAlert()">OK</button>
+      </div>
+    </div>
+    <script>
+      // Currency conversion rates (example: 1 USD = 1500 NGN)
+      const USD_TO_NGN = 1500;
+      function updatePrices() {
+        const currency = document.querySelector(
+          'input[name="currency"]:checked'
+        ).value;
+        const monthlyPrice = document.getElementById("monthlyPrice");
+        const yearlyPrice = document.getElementById("yearlyPrice");
+        if (currency === "ngn") {
+          monthlyPrice.textContent = "₦" + (3.99 * USD_TO_NGN).toLocaleString();
+          yearlyPrice.textContent = "₦" + (9.99 * USD_TO_NGN).toLocaleString();
+        } else {
+          monthlyPrice.textContent = "$3.99";
+          yearlyPrice.textContent = "$9.99";
+        }
+      }
+      updatePrices();
+
+      // Highlight selected plan
+      document.getElementById("monthlyOption").onclick = function () {
+        document.getElementById("monthlyOption").classList.add("selected");
+        document.getElementById("yearlyOption").classList.remove("selected");
+      };
+      document.getElementById("yearlyOption").onclick = function () {
+        document.getElementById("yearlyOption").classList.add("selected");
+        document.getElementById("monthlyOption").classList.remove("selected");
+      };
+
+      // Custom Alert Functions
+      function showCustomAlert(message) {
+        document.getElementById("customAlertMsg").textContent = message;
+        document.getElementById("customAlert").style.display = "flex";
+      }
+      function closeCustomAlert() {
+        document.getElementById("customAlert").style.display = "none";
+        // Optionally, redirect after success
+        if (window._redirectAfterAlert) {
+          window.location.href = window._redirectAfterAlert;
+        }
+      }
+
+      // Paystack Payment Integration
+      document
+        .getElementById("subscribeForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const plan = document.querySelector(
+            'input[name="plan"]:checked'
+          ).value;
+          const currency = document.querySelector(
+            'input[name="currency"]:checked'
+          ).value;
+          let amount = plan === "monthly" ? 3.99 : 9.99;
+          let paystackAmount, paystackCurrency;
+
+          // Basic validation for all fields
+          if (!username || !password || !phone || !email) {
+            showCustomAlert("Please fill in all fields before subscribing.");
+            window._redirectAfterAlert = null;
+            return;
+          }
+
+          if (currency === "ngn") {
+            paystackAmount = Math.round(amount * USD_TO_NGN * 100); // Paystack expects kobo
+            paystackCurrency = "NGN";
+          } else {
+            paystackAmount = Math.round(amount * 100); // Paystack expects cents
+            paystackCurrency = "USD";
+          }
+
+          let handler = PaystackPop.setup({
+            key: "", // Replace with your Paystack public key
+            email: email,
+            amount: paystackAmount,
+            currency: paystackCurrency,
+            metadata: {
+              custom_fields: [
+                {
+                  display_name: "Username",
+                  variable_name: "username",
+                  value: username,
+                },
+                { display_name: "Phone", variable_name: "phone", value: phone },
+              ],
+            },
+            callback: function (response) {
+              showCustomAlert(
+                `You have successfully subscribed for Eventify ${
+                  plan === "monthly" ? "Monthly" : "Yearly"
+                }!`
+              );
+              window._redirectAfterAlert = "index.html";
+            },
+            onClose: function () {
+              showCustomAlert("Payment cancelled.");
+              window._redirectAfterAlert = null;
+            },
+          });
+          handler.openIframe();
+        });
+    </script>
+  </body>
+</html>
